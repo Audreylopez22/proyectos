@@ -1,0 +1,84 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+body {
+  font-family: "Roboto", sans-serif;
+  background: #98a8f8;
+}
+#mascota {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+}
+.titulo {
+  font-size: 40px;
+  color: #002b5b;
+}
+
+.subtitulo {
+  color: #002b5b;
+  font-size: 20px;
+}
+
+.tarjetas {
+  display: flex;
+}
+
+.tarjeta-de-mokepon {
+  width: 170px;
+  height: 100px;
+  background: #14279b;
+  padding: 10px;
+  box-sizing: border-box;
+  margin: 10px;
+  border: 1px solid #14279b;
+  border-radius: 20px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Roboto", sans-serif;
+}
+.tarjeta-de-mokepon img {
+  width: 80px;
+}
+
+input {
+  display: none;
+  gap: 10px;
+}
+
+.boton {
+  width: 166px;
+  height: 40px;
+  background: transparent;
+  padding: 10px;
+  box-sizing: border-box;
+  margin: 10px;
+  border: 1px solid #14279b;
+  border-radius: 25pc;
+  color: #002b5b;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#ataque {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btnAtaque {
+  background-color: #14279b;
+  color: white;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 15px;
+  border-color: transparent;
+  width: 130px;
+  height: 44px;
+  font-family: "Roboto", sans-serif;
+  align-items: center;
+}
