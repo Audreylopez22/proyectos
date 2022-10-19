@@ -123,18 +123,36 @@ function ConteoVidas() {
 // MENSAJES PARA EL JUGADOR
 
 function crearMensaje() {
-  let sectionMensajes = document.getElementById("mensajes");
-  let parrafo = document.createElement("p");
-  parrafo.innerHTML =
-    "Tu mascota ataco con " + ataqueJugador + " , la mascota del enemigo ataco con " + ataqueEnemigo + " " + resultado;
-  sectionMensajes.appendChild(parrafo);
+  //let sectionMensajes = document.getElementById("mensajes");
+  let sectionMensajes = document.getElementById("resultado");
+  let ataquesDelJugador = document.getElementById("ataquesDelJugador");
+  let ataquesDelEnemigo = document.getElementById("ataquesDelEnemigo");
+
+  //let notificacion = document.createElement("p");
+  let nuevoAtaqueDelJugador = document.createElement("p");
+  let nuevoAtaqueDelEnemigo = document.createElement("p");
+
+  sectionMensajes.innerHTML = resultado;
+  nuevoAtaqueDelJugador.innerHTML = ataqueJugador;
+  nuevoAtaqueDelEnemigo.innerHTML = ataqueEnemigo;
+
+  //sectionMensajes.appendChild(notificacion);
+  ataquesDelJugador.appendChild(nuevoAtaqueDelJugador);
+  ataquesDelEnemigo.appendChild(nuevoAtaqueDelEnemigo);
+
+  //let parrafo = document.createElement("p");
+  //parrafo.innerHTML =
+  //"Tu mascota ataco con " + ataqueJugador + " , la mascota del enemigo ataco con " + ataqueEnemigo + " " + resultado;
+  //sectionMensajes.appendChild(parrafo);
 }
 
 function crearMensajeFinal(resultadoFinal) {
-  let sectionMensajes = document.getElementById("mensajes");
-  let parrafo = document.createElement("p");
-  parrafo.innerHTML = resultadoFinal;
-  sectionMensajes.appendChild(parrafo);
+  let sectionMensajes = document.getElementById("resultado");
+
+  //let parrafo = document.createElement("p");
+  sectionMensajes.innerHTML = resultadoFinal;
+
+  //sectionMensajes.appendChild(parrafo);
 
   // FINALMENTE REQUIERO DESHABILITAR LOS BOTONES CUANDO YA EL JUEGO TERMINE POR LO QUE USO EL COMANDO DISABLED
   let btnFuego = document.getElementById("btnFuego");

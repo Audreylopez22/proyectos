@@ -82,3 +82,14 @@ input {
   font-family: "Roboto", sans-serif;
   align-items: center;
 }
+
+#mensajes {
+  width: 361px;
+  background: #5584ac;
+  padding: 15px;
+  border-radius: 20px;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
