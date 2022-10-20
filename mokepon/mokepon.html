@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mokepon</title>
-    <script src="./js/mokepon.js"></script>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
@@ -37,7 +36,7 @@
     <section id="ataque">
       <h1 class="titulo">Mokepon</h1>
       <h2 class="subtitulo">Elije tu ataque:</h2>
-      <div>
+      <div class="tarjetasAtaques">
         <button id="btnFuego" class="btnAtaque">Fuego 🔥</button>
         <button id="btnAgua" class="btnAtaque">Agua 💧</button>
         <button id="btnTierra" class="btnAtaque">Tierra 🌱</button>
@@ -55,18 +54,19 @@
         </section>
       </div>
 
-      <div>
-        <div id="ataquesDelJugador"></div>
-        <div id="ataquesDelEnemigo"></div>
-        <p>
-          Tu mascota es <span id="mas_jugador"></span> y tiene
-          <span id="vidas_jugador">3</span> vidas
-        </p>
-        <p>
-          La mascota del enemigo es <span id="mas_enemigo"></span> y tiene
-          <span id="vidas_enemigo">3</span> vidas
-        </p>
+      <div class="ataques">
+        <div class="ataquesJugador">
+          <p id="vidas_jugador">3</p>
+          <p id="mas_jugador"></p>
+          <div id="ataquesDelJugador"></div>
+        </div>
+        <div class="ataquesEnemigo">
+          <p id="vidas_enemigo">3</p>
+          <p id="mas_enemigo"></p>
+          <div id="ataquesDelEnemigo"></div>
+        </div>
       </div>
     </section>
+    <script src="./js/mokepon.js"></script>
   </body>
 </html>
