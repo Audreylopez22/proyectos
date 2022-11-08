@@ -1,47 +1,105 @@
+const sectionSeleccionarAtaque = document.getElementById("ataque");
+const btnMascotaJ = document.getElementById("btnSeleccionar");
+const btnFuego = document.getElementById("btnFuego");
+const btnAgua = document.getElementById("btnAgua");
+const btnTierra = document.getElementById("btnTierra");
+const btnReiniciar = document.getElementById("btnReiniciar");
+
+const sectionSeleccionarMascota = document.getElementById("mascota");
+const a = document.getElementById("Tobias");
+const b = document.getElementById("Marlito");
+const c = document.getElementById("Cuchurrumi");
+const mas_jugador = document.getElementById("mas_jugador");
+
+const mas_Enemigo = document.getElementById("mas_enemigo");
+
+const vidas_jugador = document.getElementById("vidas_jugador");
+const vidas_enemigo = document.getElementById("vidas_enemigo");
+
+const sectionMensajes = document.getElementById("resultado");
+const ataquesDelJugador = document.getElementById("ataquesDelJugador");
+const ataquesDelEnemigo = document.getElementById("ataquesDelEnemigo");
+
+let mokepones = [];
 let ataqueJugador;
 let ataqueEnemigo;
+let opcionDeMokepones;
 let resultado;
 let vidasJugador = 3;
 let vidasEnemigo = 3;
 
+class Mokepon {
+  constructor(nombre, foto, vida) {
+    this.nombre = nombre;
+    this.foto = foto;
+    this.vida = vida;
+    this.ataques = [];
+  }
+}
+
+let Tobias = new Mokepon("Tobias", "./img/Tobias.png", 5);
+let Marlito = new Mokepon("Marlito", "./img/Marlito.png", 5);
+let Cuchurrumi = new Mokepon("Cuchurrumi", "./img/Cuy.png", 5);
+
+Tobias.ataques.push(
+  { nombre: "💧", id: "btnAgua" },
+  { nombre: "💧", id: "btnAgua" },
+  { nombre: "💧", id: "btnAgua" },
+  { nombre: "🔥", id: "btnFuego" },
+  { nombre: "🌱", id: "btnTierra" }
+);
+
+Marlito.ataques.push(
+  { nombre: "🌱", id: "btnTierra" },
+  { nombre: "🌱", id: "btnTierra" },
+  { nombre: "🌱", id: "btnTierra" },
+  { nombre: "💧", id: "btnAgua" },
+  { nombre: "🔥", id: "btnFuego" }
+);
+
+Cuchurrumi.ataques.push(
+  { nombre: "🔥", id: "btnFuego" },
+  { nombre: "🔥", id: "btnFuego" },
+  { nombre: "🔥", id: "btnFuego" },
+  { nombre: "🌱", id: "btnTierra" },
+  { nombre: "💧", id: "btnAgua" }
+);
+
+mokepones.push(Tobias, Marlito, Cuchurrumi);
+
 // INICIO DEL JUEGO
 
 function iniciarJuego() {
-  let sectionSeleccionarAtaque = document.getElementById("ataque");
   sectionSeleccionarAtaque.style.display = "none";
+  // ForEach este metodo nos ayuda a irerar o a recorrer cada uno de nuestros objetos
+  mokepones.forEach((mokepon) => {
+    // hay que generar una estructura que se le llama templates literarios para ello se requiere la comilla invertida
+    opcionDeMokepones = `
+    <input type="radio" name="mascota" id= ${mokepon.nombre} />
+    <label class="tarjeta-de-mokepon" for=${mokepon.nombre}>
+      <p>${mokepon.nombre}</p>
+      <img src=${mokepon.foto} alt=${mokepon.nombre} />
+    </label>`;
+  });
 
-  let btnMascotaJ = document.getElementById("btnSeleccionar");
   btnMascotaJ.addEventListener("click", mascotaJugador);
-
-  let btnFuego = document.getElementById("btnFuego");
   btnFuego.addEventListener("click", ataqueFuego);
-  let btnAgua = document.getElementById("btnAgua");
   btnAgua.addEventListener("click", ataqueAgua);
-  let btnTierra = document.getElementById("btnTierra");
   btnTierra.addEventListener("click", ataqueTierra);
-  let btnReiniciar = document.getElementById("btnReiniciar");
   btnReiniciar.addEventListener("click", reiniciarJuego);
 }
 
 // ELECCION DE LA MASCOTA
 
 function mascotaJugador() {
-  let sectionSeleccionarMascota = document.getElementById("mascota");
   sectionSeleccionarMascota.style.display = "none";
-
-  let sectionSeleccionarAtaque = document.getElementById("ataque");
   sectionSeleccionarAtaque.style.display = "flex";
 
-  let a = document.getElementById("Tobias").checked;
-  let b = document.getElementById("Marlito").checked;
-  let c = document.getElementById("Cuchurrumi").checked;
-  let mas_jugador = document.getElementById("mas_jugador");
-
-  if (a) {
+  if (a.checked) {
     mas_jugador.innerHTML = "Tobias";
-  } else if (b) {
+  } else if (b.checked) {
     mas_jugador.innerHTML = "Marlito";
-  } else if (c) {
+  } else if (c.checked) {
     mas_jugador.innerHTML = "Cuchurrumi";
   } else {
     alert("Selecciona una mascota ");
@@ -53,7 +111,6 @@ function mascotaJugador() {
 
 function mascotaEnemigo() {
   let mascotaAleatoria = aleatorio(1, 3);
-  let mas_Enemigo = document.getElementById("mas_enemigo");
 
   if (mascotaAleatoria == 1) {
     mas_Enemigo.innerHTML = "Tobias";
@@ -90,9 +147,6 @@ function ataqueAleatorioE() {
 // INICIO DEL CONVATE
 
 function respuesta() {
-  let vidas_jugador = document.getElementById("vidas_jugador");
-  let vidas_enemigo = document.getElementById("vidas_enemigo");
-
   if (ataqueEnemigo == ataqueJugador) {
     resultado = "Empate";
   } else if (
@@ -123,11 +177,6 @@ function ConteoVidas() {
 // MENSAJES PARA EL JUGADOR
 
 function crearMensaje() {
-  //let sectionMensajes = document.getElementById("mensajes");
-  let sectionMensajes = document.getElementById("resultado");
-  let ataquesDelJugador = document.getElementById("ataquesDelJugador");
-  let ataquesDelEnemigo = document.getElementById("ataquesDelEnemigo");
-
   //let notificacion = document.createElement("p");
   let nuevoAtaqueDelJugador = document.createElement("p");
   let nuevoAtaqueDelEnemigo = document.createElement("p");
@@ -136,30 +185,18 @@ function crearMensaje() {
   nuevoAtaqueDelJugador.innerHTML = ataqueJugador;
   nuevoAtaqueDelEnemigo.innerHTML = ataqueEnemigo;
 
-  //sectionMensajes.appendChild(notificacion);
   ataquesDelJugador.appendChild(nuevoAtaqueDelJugador);
   ataquesDelEnemigo.appendChild(nuevoAtaqueDelEnemigo);
-
-  //let parrafo = document.createElement("p");
-  //parrafo.innerHTML =
-  //"Tu mascota ataco con " + ataqueJugador + " , la mascota del enemigo ataco con " + ataqueEnemigo + " " + resultado;
-  //sectionMensajes.appendChild(parrafo);
 }
 
 function crearMensajeFinal(resultadoFinal) {
-  let sectionMensajes = document.getElementById("resultado");
-
   //let parrafo = document.createElement("p");
   sectionMensajes.innerHTML = resultadoFinal;
 
-  //sectionMensajes.appendChild(parrafo);
-
   // FINALMENTE REQUIERO DESHABILITAR LOS BOTONES CUANDO YA EL JUEGO TERMINE POR LO QUE USO EL COMANDO DISABLED
-  let btnFuego = document.getElementById("btnFuego");
+
   btnFuego.disabled = true;
-  let btnAgua = document.getElementById("btnAgua");
   btnAgua.disabled = true;
-  let btnTierra = document.getElementById("btnTierra");
   btnTierra.disabled = true;
 }
 // REINICIAR JUEGO
