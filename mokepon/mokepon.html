@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mokepon</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
@@ -15,6 +16,25 @@
       <div id="contenedorTarjetas" class="tarjetas"></div>
       <button class="boton" id="btnSeleccionar">Seleccionar</button>
     </section>
+    <section id="ver-mapa">
+      <h2 class="subtitulo">Recorre el mapa con tu mascota</h2>
+      <canvas id="mapa"></canvas>
+      <button onmouseup="detenerMovimiento()" onmousedown="moverArriba()">
+        Arriba
+      </button>
+      <div>
+        <button onmouseup="detenerMovimiento()" onmousedown="moverIzquierda()">
+          Izquierda
+        </button>
+        <button onmouseup="detenerMovimiento()" onmousedown="moverAbajo()">
+          Abajo
+        </button>
+        <button onmouseup="detenerMovimiento()" onmousedown="moverDerecha()">
+          Derecha
+        </button>
+      </div>
+    </section>
+
     <section id="ataque">
       <h1 class="titulo">Mokepon</h1>
       <h2 class="subtitulo">Elije tu ataque:</h2>
@@ -34,12 +54,12 @@
 
       <div class="ataques">
         <div class="ataquesJugador">
-          <p id="vidas_jugador">3</p>
+          <p id="vidas_jugador">0</p>
           <p id="mas_jugador"></p>
           <div id="ataquesDelJugador"></div>
         </div>
         <div class="ataquesEnemigo">
-          <p id="vidas_enemigo">3</p>
+          <p id="vidas_enemigo">0</p>
           <p id="mas_enemigo"></p>
           <div id="ataquesDelEnemigo"></div>
         </div>
